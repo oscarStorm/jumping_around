@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dshb6154o7u6c"]
+
+[ext_resource type="PackedScene" uid="uid://85fnvt4n87cr" path="res://player.tscn" id="1_80nbo"]
+[ext_resource type="AudioStream" uid="uid://cxodeoi5wyi8s" path="res://assets/audio/dessert.mp3" id="2_e2o6t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pc5la"]
+
+[node name="Game" type="Node2D" unique_id=1210024796]
+
+[node name="Player" parent="." unique_id=678096430 instance=ExtResource("1_80nbo")]
+position = Vector2(45, -54)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1264628991]
+position = Vector2(44, -51)
+zoom = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=311794538]
+position = Vector2(46, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=91534356]
+position = Vector2(-1, 0)
+shape = SubResource("WorldBoundaryShape2D_pc5la")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1475021987]
+stream = ExtResource("2_e2o6t")
+autoplay = true
