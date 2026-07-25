@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://slq6r8csef7m" path="res://assets/sprites/simple_samurai-Sheet.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cirgqail0o3rv" path="res://scripts/player_movement.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://mobxsvy2dgi2" path="res://assets/sprites/running.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://4cchej7crqt3" path="res://assets/sprites/jumping_wanderer.png" id="3_sweqy"]
 [ext_resource type="AudioStream" uid="uid://ccnn2xvxblfvr" path="res://assets/audio/sandsteps2.mp3" id="4_hqtel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
@@ -36,6 +37,42 @@ region = Rect2(192, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
 atlas = ExtResource("1_4flbx")
 region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbfsw"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ahtn"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqh7"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
 atlas = ExtResource("3_i3pqv")
@@ -105,6 +142,38 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_pylmc")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_pbfsw")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_5tmop")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_7ahtn")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_7lmhl")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtqh7")
+}],
+"loop": 0,
+"name": &"jumping",
+"speed": 12.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n7ghd")
 }, {
@@ -145,10 +214,12 @@ height = 20.0
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1380075633]
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_pc5la")
-animation = &"running"
+animation = &"jumping"
 autoplay = "idle"
-frame_progress = 0.84667736
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=23090322]
 position = Vector2(0, 4)
@@ -157,3 +228,7 @@ shape = SubResource("CapsuleShape2D_pc5la")
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="." unique_id=452533278]
 position = Vector2(-11, 0)
 stream = ExtResource("4_hqtel")
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=573557005]
+wait_time = 0.2
+one_shot = true
