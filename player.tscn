@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ccnn2xvxblfvr" path="res://assets/audio/sandsteps2.mp3" id="4_hqtel"]
 [ext_resource type="AudioStream" uid="uid://djc7exh6qb7fb" path="res://assets/audio/jump2.mp3" id="6_1jxqw"]
 [ext_resource type="Script" uid="uid://8o60aaj2j584" path="res://scripts/player.gd" id="6_2hs0m"]
+[ext_resource type="Script" uid="uid://dbq4wikv8gomk" path="res://scripts/player_audio.gd" id="7_1jxqw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -238,3 +239,6 @@ one_shot = true
 [node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=201255853]
 stream = ExtResource("6_1jxqw")
 volume_db = 11.86
+
+[node name="PlayerSFX" type="Node" parent="." unique_id=1291606193]
+script = ExtResource("7_1jxqw")

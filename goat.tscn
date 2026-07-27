@@ -4,14 +4,6 @@
 [ext_resource type="AudioStream" uid="uid://cpvbjymu3jvy5" path="res://assets/audio/goat_sound.mp3" id="2_l2mur"]
 [ext_resource type="Script" uid="uid://xr8rnubkpy53" path="res://scripts/goat.gd" id="3_6hps0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2mur"]
-atlas = ExtResource("1_2e70t")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ln5fd"]
-atlas = ExtResource("1_2e70t")
-region = Rect2(32, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wg28h"]
 atlas = ExtResource("1_2e70t")
 region = Rect2(64, 0, 32, 32)
@@ -36,12 +28,6 @@ region = Rect2(192, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l2mur")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ln5fd")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wg28h")
 }, {
 "duration": 1.0,
@@ -62,12 +48,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pc5la"]
-radius = 8.0
+radius = 4.0
 
 [node name="goat" type="CharacterBody2D" unique_id=734812930]
 script = ExtResource("3_6hps0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=530711955]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xpw5e")
 frame_progress = 0.032025322
 
@@ -77,7 +64,7 @@ max_distance = 800.0
 attenuation = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055684096]
-position = Vector2(-5, 8)
+position = Vector2(-2, 4)
 shape = SubResource("CircleShape2D_pc5la")
 
 [node name="GoatTimer" type="Timer" parent="." unique_id=167859108]
