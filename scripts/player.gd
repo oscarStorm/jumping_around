@@ -21,12 +21,18 @@ func _physics_process(delta: float) -> void:
 	if request_jump() and is_on_floor() and not jump_queued:
 		jump_queued = true
 		player_sfx.start_jump()
-	
+
+	if Input.is_action_pressed("glide") and !is_on_floor() and velocity.y < 0:
+		perform_glide()
+	if Input.is_action_pressed("glide") and !is_on_floor() and velocity.y > 0:
+		perform_last_glide()
+
 	move(delta)
 	move_and_slide()
 	
 	player_sfx.update_footsteps()
 	player_sfx.update_animation()
+	# implement sfx
 
 func request_jump() -> bool:
 	return Input.is_action_just_pressed("jump")

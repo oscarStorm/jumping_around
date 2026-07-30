@@ -12,28 +12,48 @@ func setup(player_ref: PlayerBase) -> void:
 	player = player_ref
 
 func update_footsteps() -> void:
-	if player.is_on_floor() and sprite.animation != "idle":
-		footsteps.play()
+	if player == null:
+		return
+
+	var is_running := player.is_on_floor() and absf(player.velocity.x) > 1.0
+	if is_running:
+		if not footsteps.playing:
+			footsteps.play()
 	else:
 		footsteps.stop()
 
 func start_jump() -> void:
-	if player.direction != 0.0:
-		sprite.flip_h = player.direction < 0.0
-	_play_animation("jumping")
+	if player == null:
+		return
+
+	_update_facing()
+	_play_animation(&"jumping")
 	jump.play()
 	jump_timer.start()
 
 func update_animation() -> void:
-	if player.direction != 0.0:
-		sprite.flip_h = player.direction < 0.0
+	if player == null:
+		return
+
+	_update_facing()
+
 	if not player.is_on_floor():
-		_play_animation("jumping")
-	elif player.direction != 0.0:
-		_play_animation("running")
+		if Input.is_action_pressed("glide"):
+			_play_animation(&"gliding")
+		else:
+			_play_animation(&"jumping")
+	elif absf(player.velocity.x) > 1.0:
+		_play_animation(&"running")
 	else:
-		sprite.flip_h = player.idle_flip_h
-		_play_animation("idle")
+		if "idle_flip_h" in player:
+			sprite.flip_h = player.get("idle_flip_h")
+		_play_animation(&"idle")
+
+func _update_facing() -> void:
+	if player.direction > 0.0:
+		sprite.flip_h = false
+	elif player.direction < 0.0:
+		sprite.flip_h = true
 
 func _play_animation(animation_name: StringName) -> void:
 	if sprite.animation != animation_name:

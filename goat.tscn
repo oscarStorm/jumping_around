@@ -54,6 +54,7 @@ radius = 4.0
 script = ExtResource("3_6hps0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=530711955]
+position = Vector2(0, -8)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xpw5e")
 frame_progress = 0.032025322
@@ -64,7 +65,7 @@ max_distance = 800.0
 attenuation = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055684096]
-position = Vector2(-2, 4)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_pc5la")
 
 [node name="GoatTimer" type="Timer" parent="." unique_id=167859108]
