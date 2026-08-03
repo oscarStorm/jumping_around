@@ -1,8 +1,8 @@
 class_name PlayerBase
 extends CharacterBody2D
 
-const DECELERATION := 0.1 
-const ACCELERATION := 0.1
+const DECELERATION := 1600.0
+const ACCELERATION := 1200.0
 const SPEED := 140.0
 const JUMP_VELOCITY := 200.0
 const GRAVITY := 900.0
@@ -19,9 +19,9 @@ func move(delta: float) -> void:
 	gravity_2 = GRAVITY
 
 	if direction != 0.0:
-		velocity.x = move_toward(velocity.x, direction * SPEED, SPEED*ACCELERATION)
+		velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, SPEED*DECELERATION)
+		velocity.x = move_toward(velocity.x, 0.0, DECELERATION * delta)
 
 func perform_jump()-> void:
 	var can_jump := is_on_floor()

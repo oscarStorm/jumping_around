@@ -39,6 +39,8 @@ func update_animation() -> void:
 
 	if not player.is_on_floor():
 		if Input.is_action_pressed("glide"):
+			if "idle_flip_h" in player:
+				sprite.flip_h = player.get("idle_flip_h")
 			_play_animation(&"gliding")
 		else:
 			_play_animation(&"jumping")
